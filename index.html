@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Ammad Mubashar — AI Student & Builder</title>
+<meta name="description" content="Interactive portfolio of Ammad Mubashar — BS Artificial Intelligence student, full-stack tinkerer, and content creator." />
+<meta name="theme-color" content="#16130e" />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:wght@300..800&family=JetBrains+Mono:wght@300..700&display=swap" rel="stylesheet" />
+
+<!-- Stylesheet -->
+<link rel="stylesheet" href="style.css" />
+
+<!-- Three.js (before body close so it doesn't block paint) -->
+</head>
+<body>
+
+<!-- ──────────────── PAGE LOADER ──────────────── -->
+<div class="loader" id="loader">
+  <div class="loader-text">Loading</div>
+  <div class="loader-sub">Ammad Mubashar Portfolio</div>
+  <div class="loader-progress" id="loaderProgress">0</div>
+</div>
+
+<!-- ──────────────── PERSISTENT BG ──────────────── -->
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+
+<!-- ──────────────── CURSOR ──────────────── -->
+<div class="cursor-ring" id="cursor" aria-hidden="true"></div>
+
+<!-- ──────────────── SCROLL PROGRESS ──────────────── -->
+<div class="progress" id="progress" role="progressbar" aria-hidden="true"></div>
+
+<!-- ──────────────── NAV ──────────────── -->
+<header class="nav" role="banner">
+  <a href="#top" class="logo" data-hover>Ammad<span>.</span></a>
+  <nav aria-label="Site navigation">
+    <a href="#about"    data-hover>About</a>
+    <a href="#work"     data-hover>Work</a>
+    <a href="#projects" data-hover>Projects</a>
+    <a href="#skills"   data-hover>Skills</a>
+    <a href="#contact"  data-hover>Contact</a>
+  </nav>
+  <button class="toggle" id="toggle" data-hover aria-label="Toggle colour scheme">Light</button>
+</header>
+
+<!-- ──────────────── HERO ──────────────── -->
+<section class="hero" id="top">
+  <canvas id="spiral" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="blob"  aria-hidden="true"></div>
+
+  <div class="hero-inner">
+    <div class="availability">
+      <span class="dot" aria-hidden="true"></span>
+      Available for collaborations · Islamabad, PK
+    </div>
+
+    <h1 class="title">
+      <span>Ammad</span>
+      <span><em>Mubashar</em></span>
+    </h1>
+
+    <div class="hero-grid">
+      <p>
+        BS Artificial Intelligence student at <strong>SZABIST</strong>, building
+        practical ML systems, full-stack apps, and digital experiences.
+      </p>
+      <div class="meta">
+        <div><span>CGPA</span>  <span>3.51 / 4.00</span></div>
+        <div><span>Grad</span>  <span>Aug 2028</span></div>
+        <div><span>Focus</span> <span>AI · Web</span></div>
+      </div>
+    </div>
+
+    <div class="hero-cta">
+      <a href="#contact" class="btn primary" data-hover>
+        Get in touch
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M7 17 17 7M7 7h10v10"/>
+        </svg>
+      </a>
+      <a href="#" id="downloadCv" class="btn ghost" data-hover>
+        Download CV
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────── MARQUEE ──────────────── -->
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee" id="marquee"></div>
+</div>
+
+<!-- ──────────────── ABOUT ──────────────── -->
+<section class="sec" id="about">
+  <div class="reveal">
+    <div class="label">01 — About</div>
+    <h2 class="title">A student obsessed with <em>building things</em> that learn.</h2>
+  </div>
+  <div class="about-grid">
+    <p class="lead reveal">
+      I study how machines reason and how humans connect. By day I'm deep in datasets
+      and Flask routes. By night I'm scheduling content, mentoring peers in C++, or
+      shipping a side project.
+    </p>
+    <div class="meta-list reveal">
+      <div>
+        <div class="k">Education</div>
+        <div>B.S. Artificial Intelligence — SZABIST Rawalpindi</div>
+      </div>
+      <div>
+        <div class="k">Coursework</div>
+        <div>DSA, Machine Learning, OOP, Statistics, Computer Organization</div>
+      </div>
+      <div>
+        <div class="k">Currently</div>
+        <div>Leading a 4-dev campus team building a full web platform</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────── EXPERIENCE ──────────────── -->
+<section class="sec" id="work">
+  <div class="reveal">
+    <div class="label">02 — Experience</div>
+    <h2 class="title">Roles &amp; responsibilities.</h2>
+  </div>
+  <div id="exp"></div>
+</section>
+
+<!-- ──────────────── PROJECTS ──────────────── -->
+<section class="sec" id="projects">
+  <div class="reveal">
+    <div class="label">03 — Selected Work</div>
+    <h2 class="title">Things I've <em>shipped</em>.</h2>
+  </div>
+  <div class="proj-grid" id="projGrid"></div>
+</section>
+
+<!-- ──────────────── SKILLS ──────────────── -->
+<section class="sec" id="skills">
+  <canvas id="skills-3d" aria-hidden="true"></canvas>
+  <div class="inner">
+    <div class="reveal">
+      <div class="label">04 — Toolkit</div>
+      <h2 class="title">What I work with.</h2>
+    </div>
+    <div class="skills-grid" id="skillsGrid"></div>
+  </div>
+</section>
+
+<!-- ──────────────── CONTACT ──────────────── -->
+<section id="contact">
+  <div class="blob2" aria-hidden="true"></div>
+  <div class="inner">
+    <div class="label" style="text-align:center">05 — Let's talk</div>
+    <h2>Got an <em>idea</em>?<br>Let's build it.</h2>
+
+    <a href="mailto:ammadgo123@gmail.com" class="btn primary" data-hover style="margin-top:10px">
+      ammadgo123@gmail.com
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M7 17 17 7M7 7h10v10"/>
+      </svg>
+    </a>
+
+    <form class="form" id="contactForm" autocomplete="off" novalidate>
+      <div class="row">
+        <div>
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" placeholder="Your name" required data-hover />
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="your@email.com" required data-hover />
+        </div>
+      </div>
+      <div>
+        <label for="msg">Message</label>
+        <textarea id="msg" name="msg" required data-hover placeholder="Tell me about your idea…"></textarea>
+      </div>
+      <button type="submit" class="btn primary submit" data-hover>
+        Send message
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z"/>
+        </svg>
+      </button>
+      <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+    </form>
+
+    <div class="contact-meta">
+      <div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M22 16.92V21a1 1 0 0 1-1.1 1A19 19 0 0 1 2 4.1 1 1 0 0 1 3 3h4.09a1 1 0 0 1 1 .75l1 4a1 1 0 0 1-.27 1L7.21 10.79a16 16 0 0 0 6 6l2.05-2.05a1 1 0 0 1 1-.27l4 1a1 1 0 0 1 .74 1Z"/>
+        </svg>
+        0311-5171597
+      </div>
+      <div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/>
+          <circle cx="12" cy="10" r="3"/>
+        </svg>
+        Islamabad, Pakistan
+      </div>
+      <div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <path d="m22 7-10 6L2 7"/>
+        </svg>
+        ammadgo123@gmail.com
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────── FOOTER ──────────────── -->
+<footer>
+  <div>© 2026 Ammad Mubashar</div>
+  <div>Crafted with care · Pakistan 🇵🇰</div>
+</footer>
+
+<!-- ──────────────── SCRIPTS ──────────────── -->
+<!-- Three.js loaded async so it doesn't block first paint -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js" defer></script>
+<script src="main.js" defer></script>
+
+</body>
+</html>
